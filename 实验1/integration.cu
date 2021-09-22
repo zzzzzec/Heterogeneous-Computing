@@ -25,7 +25,17 @@ __global__ void d_integration(int len, TYPE *d_result) {
   for (int i = tId * len; i < tId * len + len; i++) {
     d_result[tId] += (1.0 / N) * (4.0 / (1.0 + (pow((i + 0.5) / N, 2.0))));
   }
-  
+}
+__global__ void d_arctan(int len, TYPE *d_result){
+  int ix = threadIdx.x + (blockIdx.x * blockDim.x);
+  int iy = threadIdx.y + (blockIdx.y * blockDim.y);
+  int tId = iy * (blockDim.x * gridDim.x) + ix;
+  int sign = 0;
+  tId%2==0?sign = -1:sign = 1;
+  for (int i = tId*len ; i < tId*len + len ; i++)
+  {
+      d_result[tId] += sign*(1/(2(i+1) -1));
+  }
 }
 #endif
 
