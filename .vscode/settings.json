@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "stdio.h": "c",
+        "pthread.h": "c",
+        "time.h": "c",
+        "string.h": "c",
+        "cstdlib": "c"
     }
 }

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "string.h": "c",
+        "cmath": "c",
+        "pthread.h": "c",
+        "new": "c",
+        "unistd.h": "c"
+    }
+}

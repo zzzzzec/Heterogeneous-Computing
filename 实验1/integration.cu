@@ -7,7 +7,7 @@
 // D:\Visual Studio\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x64
 #define TYPE double
 #define N (1000*1000*100)
-#define THREDA_N 5000 //分为SIZE个部分
+#define THREDA_N 1 //分为SIZE个部分
 #define PROCESSOR 8
 #define GPU
 #define MUTITHREAD
@@ -25,6 +25,11 @@ __global__ void d_integration(int len, TYPE *d_result) {
   for (int i = tId * len; i < tId * len + len; i++) {
     d_result[tId] += (1.0 / N) * (4.0 / (1.0 + (pow((i + 0.5) / N, 2.0))));
   }
+  while (1)
+  {
+    /* code */
+  }
+  
 }
 __global__ void d_arctan(int len, TYPE *d_result){
   int ix = threadIdx.x + (blockIdx.x * blockDim.x);
@@ -34,9 +39,10 @@ __global__ void d_arctan(int len, TYPE *d_result){
   tId%2==0?sign = -1:sign = 1;
   for (int i = tId*len ; i < tId*len + len ; i++)
   {
-      d_result[tId] += sign*(1/(2(i+1) -1));
+      d_result[tId] += sign*(1/(2*(i+1) -1));
   }
 }
+
 #endif
 
 TYPE h_integration() {
@@ -77,8 +83,8 @@ int main() {
   cudaError_t memcpyError = cudaMemcpy(d_result, h_result, sizeOfResult, cudaMemcpyHostToDevice);
   printf("cuda : malloc %s \n", cudaGetErrorString(memcpyError));
 
-  dim3 block(500,2,1);
-  dim3 grid(5,1,1);
+  dim3 block(1,1,1);
+  dim3 grid(1,1,1);
   double dur;
   clock_t start,end;
   start = clock();
