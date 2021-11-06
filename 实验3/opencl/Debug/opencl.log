@@ -1,0 +1,6 @@
+﻿  quick_start.cpp
+D:\desktop\CS\异构计算\实验3\opencl\quick_start.cpp(41,23): warning C4018: “<”: 有符号/无符号不匹配
+D:\desktop\CS\异构计算\实验3\opencl\quick_start.cpp(62,23): warning C4018: “<”: 有符号/无符号不匹配
+D:\desktop\CS\异构计算\实验3\opencl\quick_start.cpp(31,13): warning C4101: “ret_num_devices”: 未引用的局部变量
+load.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/INCREMENTAL:NO”规范)
+  opencl.vcxproj -> D:\desktop\CS\异构计算\实验3\opencl\Debug\opencl.exe
